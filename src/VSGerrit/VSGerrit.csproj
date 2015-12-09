@@ -62,6 +62,10 @@
     <Compile Include="Common\Converters\BooleanVisibilityConverter.cs" />
     <Compile Include="Features\Adornment\CommentAdornment.cs" />
     <Compile Include="Features\Adornment\CommentAdornmentFactory.cs" />
+    <Compile Include="Features\Adornment\CommentPopup\CommentPopup.xaml.cs">
+      <DependentUpon>CommentPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Adornment\CommentPopup\CommentPopupViewModel.cs" />
     <Compile Include="Features\ChangeBrowser\ChangeBrowserToolWindow.cs" />
     <Compile Include="Features\ChangeBrowser\ChangeBrowserCommand.cs" />
     <Compile Include="Features\ChangeBrowser\ChangeBrowserControl.xaml.cs">
@@ -113,6 +117,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Features\Adornment\CommentPopup\CommentPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Features\ChangeBrowser\ChangeBrowserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -346,6 +354,8 @@
       <SubType>Designer</SubType>
     </VSCTCompile>
     <Resource Include="Features\ChangeBrowser\Controls\ButtonBar\Resources\settingsIcon.png" />
+    <Resource Include="Features\Adornment\CommentPopup\Resources\bubble2.png" />
+    <Resource Include="Features\Adornment\CommentPopup\Resources\bubble3.png" />
     <Content Include="Features\ChangeBrowser\Resources\ChangeBrowserControlCommand.png" />
     <Content Include="Features\ChangeBrowser\Resources\ChangeBrowserControlPackage.ico" />
   </ItemGroup>
