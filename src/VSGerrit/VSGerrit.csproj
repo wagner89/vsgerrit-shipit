@@ -63,6 +63,10 @@
       <DependentUpon>ButtonBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\ChangeBrowser\Controls\ButtonBar\ButtonBarViewModel.cs" />
+    <Compile Include="Features\ChangeBrowser\Controls\ChangeList\ChangeListView.xaml.cs">
+      <DependentUpon>ChangeListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ChangeBrowser\Controls\ChangeList\ChangeListViewModel.cs" />
     <Compile Include="Features\ChangeBrowser\Controls\Settings\GerritSettingsView.xaml.cs">
       <DependentUpon>GerritSettingsView.xaml</DependentUpon>
     </Compile>
@@ -88,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Features\ChangeBrowser\Controls\ButtonBar\ButtonBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\ChangeBrowser\Controls\ChangeList\ChangeListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

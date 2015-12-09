@@ -27,6 +27,5 @@
         <buttonBar:ButtonBar DataContext="{Binding ButtonBarViewModel}">
             
         </buttonBar:ButtonBar> 
-        
     </Grid>
 </UserControl>
