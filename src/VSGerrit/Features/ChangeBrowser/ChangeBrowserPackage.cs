@@ -39,9 +39,9 @@ namespace VSGerrit.Features.ChangeBrowser
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideToolWindow(typeof(ChangeBrowserToolWindow))]
-    [Guid(ChangeBrowserControlPackage.PackageGuidString)]
+    [Guid(ChangeBrowserPackage.PackageGuidString)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
-    public sealed class ChangeBrowserControlPackage : Package
+    public sealed class ChangeBrowserPackage : Package
     {
         /// <summary>
         /// ChangeBrowserControlPackage GUID string.
@@ -51,7 +51,7 @@ namespace VSGerrit.Features.ChangeBrowser
         /// <summary>
         /// Initializes a new instance of the <see cref="ChangeBrowserToolWindow"/> class.
         /// </summary>
-        public ChangeBrowserControlPackage()
+        public ChangeBrowserPackage()
         {
             // Inside this method you can place any initialization code that does not require
             // any Visual Studio service because at this point the package object is created but
@@ -67,7 +67,7 @@ namespace VSGerrit.Features.ChangeBrowser
         /// </summary>
         protected override void Initialize()
         {
-            ChangeBrowserControlCommand.Initialize(this);
+            ChangeBrowserCommand.Initialize(this);
             base.Initialize();
         }
 

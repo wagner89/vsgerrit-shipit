@@ -53,11 +53,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Features\ChangeBrowser\ChangeBrowserToolWindow.cs" />
-    <Compile Include="Features\ChangeBrowser\ChangeBrowserControlCommand.cs" />
-    <Compile Include="Features\ChangeBrowser\ChangeBrowserControlControl.xaml.cs">
-      <DependentUpon>ChangeBrowserControlControl.xaml</DependentUpon>
+    <Compile Include="Features\ChangeBrowser\ChangeBrowserCommand.cs" />
+    <Compile Include="Features\ChangeBrowser\ChangeBrowserControl.xaml.cs">
+      <DependentUpon>ChangeBrowserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\ChangeBrowser\ChangeBrowserControlPackage.cs" />
+    <Compile Include="Features\ChangeBrowser\ChangeBrowserPackage.cs" />
     <Compile Include="Features\ChangeBrowser\Controls\ButtonBar\ButtonBar.xaml.cs">
       <DependentUpon>ButtonBar.xaml</DependentUpon>
     </Compile>
@@ -80,7 +80,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Features\ChangeBrowser\ChangeBrowserControlControl.xaml">
+    <Page Include="Features\ChangeBrowser\ChangeBrowserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -89,6 +89,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Features\ChangeBrowser\Controls\Settings\GerritSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\ChangeBrowser\Resources\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

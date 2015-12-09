@@ -7,6 +7,14 @@
         xmlns:settings="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.Settings;assembly=VSGerrit"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/VSGerrit;component/Features/ChangeBrowser/Resources/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
     <Grid>
         <settings:GerritSettingsView/>
     </Grid>

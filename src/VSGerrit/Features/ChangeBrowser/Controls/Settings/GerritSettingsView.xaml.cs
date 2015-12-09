@@ -1,6 +1,8 @@
-﻿namespace VSGerrit.Features.ChangeBrowser.Controls.Settings
+﻿using System.Windows.Controls;
+
+namespace VSGerrit.Features.ChangeBrowser.Controls.Settings
 {
-    public partial class GerritSettingsView
+    public partial class GerritSettingsView : UserControl
     {
         public GerritSettingsView()
         {
