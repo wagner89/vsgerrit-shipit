@@ -1,20 +1,26 @@
 ﻿using Microsoft.VisualStudio.PlatformUI;
 using System.Windows.Input;
+using VSGerrit.Features.ChangeBrowser.Services;
 
 namespace VSGerrit.Features.ChangeBrowser.Controls.ButtonBar
 {
     public class ButtonBarViewModel
     {
-        public ButtonBarViewModel()
+        private readonly IChangeBrowserNavigationService _navService;
+
+        public ButtonBarViewModel(IChangeBrowserNavigationService navService)
         {
-            SettingsButtonClickCommand = new DelegateCommand(_ => ToggleSettingsView(), (_) => true);
+            _navService = navService;
+            SettingsButtonClickCommand = new DelegateCommand(_ => ToggleSettingsView(), _ => true);
         }
 
         public ICommand SettingsButtonClickCommand { get; set; }
 
+        
+
         private void ToggleSettingsView()
         {
-            // TODO
+            _navService.Navigate();
         }
     }
 }

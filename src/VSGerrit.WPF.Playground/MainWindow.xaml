@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VSGerrit.WPF.Playground"
         xmlns:settings="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.Settings;assembly=VSGerrit"
+        xmlns:changeBrowser="clr-namespace:VSGerrit.Features.ChangeBrowser;assembly=VSGerrit"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
@@ -16,6 +17,9 @@
     </Window.Resources>
     
     <Grid>
-        <settings:GerritSettingsView/>
+        <StackPanel>
+            <changeBrowser:ChangeBrowserControl/>
+            <settings:GerritSettingsView/>
+        </StackPanel>
     </Grid>
 </Window>

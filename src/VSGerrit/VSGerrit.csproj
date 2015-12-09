@@ -58,6 +58,7 @@
       <DependentUpon>ChangeBrowserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\ChangeBrowser\ChangeBrowserPackage.cs" />
+    <Compile Include="Features\ChangeBrowser\ChangeBrowserViewModel.cs" />
     <Compile Include="Features\ChangeBrowser\Controls\ButtonBar\ButtonBar.xaml.cs">
       <DependentUpon>ButtonBar.xaml</DependentUpon>
     </Compile>
@@ -71,6 +72,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GerritSettingsViewLocalization.resx</DependentUpon>
     </Compile>
+    <Compile Include="Features\ChangeBrowser\Services\ChangeBrowserNavigationService.cs" />
+    <Compile Include="Features\ChangeBrowser\Services\IChangeBrowserNavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

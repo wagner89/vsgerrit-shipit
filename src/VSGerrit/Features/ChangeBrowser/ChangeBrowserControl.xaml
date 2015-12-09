@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:buttonBar="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.ButtonBar"
+             xmlns:changeBrowser="clr-namespace:VSGerrit.Features.ChangeBrowser"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
-             Name="VsgerritChangeBrowser">
+             Name="VsgerritChangeBrowser"
+             d:DataContext="{d:DesignInstance changeBrowser:ChangeBrowserViewModel}">
     
     <UserControl.Resources>
         <ResourceDictionary>
@@ -22,13 +24,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <buttonBar:ButtonBar>
+        <buttonBar:ButtonBar DataContext="{Binding ButtonBarViewModel}">
             
         </buttonBar:ButtonBar> 
         
-        
-        <StackPanel Orientation="Vertical">
-
-        </StackPanel>
     </Grid>
 </UserControl>
