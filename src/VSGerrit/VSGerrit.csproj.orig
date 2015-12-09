@@ -58,9 +58,10 @@
       <DependentUpon>ChangeBrowserControlControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\ChangeBrowser\ChangeBrowserControlPackage.cs" />
+<<<<<<< HEAD
     <Compile Include="Features\ChangeBrowser\Controls\ButtonBar\ButtonBar.xaml.cs">
       <DependentUpon>ButtonBar.xaml</DependentUpon>
-    </Compile>
+=======
     <Compile Include="Features\ChangeBrowser\Controls\Settings\GerritSettingsView.xaml.cs">
       <DependentUpon>GerritSettingsView.xaml</DependentUpon>
     </Compile>
@@ -69,6 +70,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GerritSettingsViewLocalization.resx</DependentUpon>
+>>>>>>> origin/master
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -83,11 +85,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< HEAD
     <Page Include="Features\ChangeBrowser\Controls\ButtonBar\ButtonBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+=======
     <Page Include="Features\ChangeBrowser\Controls\Settings\GerritSettingsView.xaml">
+>>>>>>> origin/master
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -228,9 +230,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="Features\ChangeBrowser\Controls\" />
-  </ItemGroup>
+<<<<<<< HEAD
+=======
   <ItemGroup>
     <ProjectReference Include="..\VSGerrit.Api.Domain\VSGerrit.Api.Domain.csproj">
       <Project>{cb6fb98f-bf1a-4337-a7bc-36bb3ba8f28f}</Project>
@@ -241,6 +242,7 @@
       <Name>VSGerrit.Api</Name>
     </ProjectReference>
   </ItemGroup>
+>>>>>>> origin/master
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
