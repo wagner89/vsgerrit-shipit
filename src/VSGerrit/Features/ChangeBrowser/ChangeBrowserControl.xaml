@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:buttonBar="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.ButtonBar"
              xmlns:changeBrowser="clr-namespace:VSGerrit.Features.ChangeBrowser"
+             xmlns:changeList="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.ChangeList"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
              Name="VsgerritChangeBrowser"
@@ -22,10 +23,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <buttonBar:ButtonBar DataContext="{Binding ButtonBarViewModel}">
-            
-        </buttonBar:ButtonBar> 
+        <buttonBar:ButtonBar Grid.Row="0" DataContext="{Binding ButtonBarViewModel}" />
+
+        <ScrollViewer Grid.Row="1">
+            <changeList:ChangeListView DataContext="{Binding ChangeListViewModel}"/>
+        </ScrollViewer>
+        
     </Grid>
 </UserControl>

@@ -44,7 +44,7 @@
                             <TextBlock Grid.Row="0"
                                        Grid.Column="1"
                                        Text="{Binding Subject}"
-                                       Style="{DynamicResource FieldValue}" />
+                                       Style="{DynamicResource FieldText}" />
 
                             <TextBlock Grid.Row="1"
                                        Grid.Column="0"
@@ -54,7 +54,7 @@
                             <TextBlock Grid.Row="1"
                                        Grid.Column="1"
                                        Text="{Binding Project}"
-                                       Style="{DynamicResource FieldValue}" />
+                                       Style="{DynamicResource FieldText}" />
 
                             <TextBlock Grid.Row="2"
                                        Grid.Column="0"
@@ -64,7 +64,7 @@
                             <TextBlock Grid.Row="2"
                                        Grid.Column="1"
                                        Text="{Binding Owner.Username}"
-                                       Style="{DynamicResource FieldValue}" />
+                                       Style="{DynamicResource FieldText}" />
                         </Grid>
                     </Border>
                 </DataTemplate>

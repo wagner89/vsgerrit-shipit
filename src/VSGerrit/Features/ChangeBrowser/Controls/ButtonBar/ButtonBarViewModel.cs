@@ -20,7 +20,7 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ButtonBar
 
         private void ToggleSettingsView()
         {
-            _navService.Navigate();
+            _navService.NavigateToSettings();
         }
     }
 }
