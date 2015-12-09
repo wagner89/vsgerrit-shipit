@@ -8,7 +8,9 @@
         xmlns:changeBrowser="clr-namespace:VSGerrit.Features.ChangeBrowser;assembly=VSGerrit"
         xmlns:changeList="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.ChangeList;assembly=VSGerrit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" 
+        Height="600" 
+        Width="400">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
