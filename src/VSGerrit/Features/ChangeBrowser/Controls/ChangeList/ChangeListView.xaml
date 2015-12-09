@@ -53,6 +53,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
@@ -84,6 +85,16 @@
                             <TextBlock Grid.Row="2"
                                        Grid.Column="1"
                                        Text="{Binding Owner.Username}"
+                                       Style="{DynamicResource FieldText}" />
+
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="0"
+                                       Text="{x:Static resources:ChangeListResources.Branch}"
+                                       Style="{DynamicResource FieldText}" />
+
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="1"
+                                       Text="{Binding Branch}"
                                        Style="{DynamicResource FieldText}" />
                         </Grid>
                     </Border>

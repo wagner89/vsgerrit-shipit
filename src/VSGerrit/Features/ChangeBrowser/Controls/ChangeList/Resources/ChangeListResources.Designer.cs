@@ -71,6 +71,15 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Branch:.
+        /// </summary>
+        public static string Branch {
+            get {
+                return ResourceManager.GetString("Branch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ChangeId:.
         /// </summary>
         public static string ChangeId {
