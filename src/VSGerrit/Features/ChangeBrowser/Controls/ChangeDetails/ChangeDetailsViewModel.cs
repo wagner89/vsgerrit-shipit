@@ -26,9 +26,13 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
             set
             {
                 _changeInfo = value;
+
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(CanStartReview));
             }
         }
+
+        public bool CanStartReview => ChangeInfo != null;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
