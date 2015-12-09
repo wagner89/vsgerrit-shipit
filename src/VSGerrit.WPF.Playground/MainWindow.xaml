@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:VSGerrit.WPF.Playground"
         xmlns:settings="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.Settings;assembly=VSGerrit"
         xmlns:changeBrowser="clr-namespace:VSGerrit.Features.ChangeBrowser;assembly=VSGerrit"
+        xmlns:changeList="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.ChangeList;assembly=VSGerrit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" 
+        Height="600" 
+        Width="400">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,11 +18,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+
+    <changeBrowser:ChangeBrowserControl />
     
-    <Grid>
-        <StackPanel>
-            <changeBrowser:ChangeBrowserControl/>
-            <settings:GerritSettingsView/>
-        </StackPanel>
-    </Grid>
 </Window>

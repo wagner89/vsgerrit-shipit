@@ -21,7 +21,8 @@
                     VerticalAlignment="Center">
             <Button Width="25"
                     Margin="2.5"
-                    Content="{StaticResource SettingsIcon}">
+                    Content="{StaticResource SettingsIcon}"
+                    Command="{Binding NavigateToSetingsCommand}">
             </Button>
         </StackPanel>
     </Grid>

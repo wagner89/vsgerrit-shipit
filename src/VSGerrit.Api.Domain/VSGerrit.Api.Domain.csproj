@@ -53,6 +53,7 @@
     <Compile Include="ChangeInfoStatus.cs" />
     <Compile Include="CodeReviewLabel.cs" />
     <Compile Include="CommentInfo.cs" />
+    <Compile Include="CommentRange.cs" />
     <Compile Include="CommitInfo.cs" />
     <Compile Include="FetchInfo.cs" />
     <Compile Include="FileInfo.cs" />

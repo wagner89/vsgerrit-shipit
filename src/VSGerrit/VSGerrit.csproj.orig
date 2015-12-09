@@ -52,16 +52,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Features\ChangeBrowser\ChangeBrowserToolWindow.cs" />
-    <Compile Include="Features\ChangeBrowser\ChangeBrowserControlCommand.cs" />
-    <Compile Include="Features\ChangeBrowser\ChangeBrowserControlControl.xaml.cs">
-      <DependentUpon>ChangeBrowserControlControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Features\ChangeBrowser\ChangeBrowserControlPackage.cs" />
 <<<<<<< HEAD
+    <Compile Include="Features\Adornment\AdornmentHelper.cs" />
+    <Compile Include="Features\Adornment\CommentAdornment.cs" />
+    <Compile Include="Features\Adornment\CommentAdornmentFactory.cs" />
+=======
+    <Compile Include="Common\Converters\BooleanVisibilityConverter.cs" />
+>>>>>>> origin/master
+    <Compile Include="Features\ChangeBrowser\ChangeBrowserToolWindow.cs" />
+    <Compile Include="Features\ChangeBrowser\ChangeBrowserCommand.cs" />
+    <Compile Include="Features\ChangeBrowser\ChangeBrowserControl.xaml.cs">
+      <DependentUpon>ChangeBrowserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ChangeBrowser\ChangeBrowserPackage.cs" />
+    <Compile Include="Features\ChangeBrowser\ChangeBrowserViewModel.cs" />
     <Compile Include="Features\ChangeBrowser\Controls\ButtonBar\ButtonBar.xaml.cs">
       <DependentUpon>ButtonBar.xaml</DependentUpon>
-=======
+    </Compile>
+    <Compile Include="Features\ChangeBrowser\Controls\ButtonBar\ButtonBarViewModel.cs" />
+    <Compile Include="Features\ChangeBrowser\Controls\ChangeDetails\ChangeDetails.xaml.cs">
+      <DependentUpon>ChangeDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ChangeBrowser\Controls\ChangeDetails\ChangeDetailsViewModel.cs" />
+    <Compile Include="Features\ChangeBrowser\Controls\ChangeDetails\Resources\ChangeDetailsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangeDetailsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ChangeBrowser\Controls\ChangeList\ChangeListView.xaml.cs">
+      <DependentUpon>ChangeListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ChangeBrowser\Controls\ChangeList\ChangeListViewModel.cs" />
+    <Compile Include="Features\ChangeBrowser\Controls\ChangeList\Resources\ChangeListResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangeListResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Features\ChangeBrowser\Controls\Settings\GerritSettingsView.xaml.cs">
       <DependentUpon>GerritSettingsView.xaml</DependentUpon>
     </Compile>
@@ -70,26 +96,40 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GerritSettingsViewLocalization.resx</DependentUpon>
->>>>>>> origin/master
     </Compile>
+    <Compile Include="Features\ChangeBrowser\Services\IChangeBrowserNavigationService.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Features\ChangeBrowser\ChangeBrowserControlControl.xaml">
+    <Page Include="Features\ChangeBrowser\ChangeBrowserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-<<<<<<< HEAD
     <Page Include="Features\ChangeBrowser\Controls\ButtonBar\ButtonBar.xaml">
-=======
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\ChangeBrowser\Controls\ChangeDetails\ChangeDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\ChangeBrowser\Controls\ChangeList\ChangeListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Features\ChangeBrowser\Controls\Settings\GerritSettingsView.xaml">
->>>>>>> origin/master
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\ChangeBrowser\Resources\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,6 +155,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.CommandBars, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.CoreUtility, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.CoreUtility.14.1.24720\lib\net45\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Imaging, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.VisualStudio.Imaging.14.1.24720\lib\net45\Microsoft.VisualStudio.Imaging.dll</HintPath>
@@ -171,6 +215,22 @@
       <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.9.0.9.0.30729\lib\Microsoft.VisualStudio.Shell.Interop.9.0.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.Data, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Text.Data.14.1.24720\lib\net45\Microsoft.VisualStudio.Text.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.Logic, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Text.Logic.14.1.24720\lib\net45\Microsoft.VisualStudio.Text.Logic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.UI, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Text.UI.14.1.24720\lib\net45\Microsoft.VisualStudio.Text.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Text.UI.Wpf.14.1.24720\lib\net45\Microsoft.VisualStudio.Text.UI.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TextManager.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\Microsoft.VisualStudio.TextManager.Interop.7.10.6070\lib\Microsoft.VisualStudio.TextManager.Interop.dll</HintPath>
       <Private>True</Private>
@@ -197,7 +257,9 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -219,6 +281,14 @@
     <Content Include="Features\ChangeBrowser\Resources\ChangeBrowserControlPackage.ico" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Features\ChangeBrowser\Controls\ChangeDetails\Resources\ChangeDetailsResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChangeDetailsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\ChangeBrowser\Controls\ChangeList\Resources\ChangeListResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChangeListResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\ChangeBrowser\Controls\Settings\Resources\GerritSettingsViewLocalization.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GerritSettingsViewLocalization.Designer.cs</LastGenOutput>
@@ -230,8 +300,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
-<<<<<<< HEAD
-=======
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\VSGerrit.Api.Domain\VSGerrit.Api.Domain.csproj">
       <Project>{cb6fb98f-bf1a-4337-a7bc-36bb3ba8f28f}</Project>
@@ -242,7 +311,6 @@
       <Name>VSGerrit.Api</Name>
     </ProjectReference>
   </ItemGroup>
->>>>>>> origin/master
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -6,8 +6,6 @@
 
 namespace VSGerrit.Features.ChangeBrowser
 {
-    using System.Diagnostics.CodeAnalysis;
-    using System.Windows;
     using System.Windows.Controls;
 
     /// <summary>
@@ -20,10 +18,9 @@ namespace VSGerrit.Features.ChangeBrowser
         /// </summary>
         public ChangeBrowserControl()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+
             DataContext = new ChangeBrowserViewModel();
         }
-
-        
     }
 }
