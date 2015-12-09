@@ -13,7 +13,13 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeList
         {
             _navigationService = navigationService;
 
-            Changes = changeRepository.GetAll(new ChangeQueryParameters { ReviewedByMe = true }, new ChangeOptionalParameters { DetailedAccounts = true });
+            var queryParameters = new ChangeQueryParameters
+            {
+                ReviewedByMe = true,
+                NumberOfResults = 10
+            };
+
+            Changes = changeRepository.GetAll(queryParameters, new ChangeOptionalParameters {DetailedAccounts = true});
         }
 
         public List<ChangeInfo> Changes { get; set; }

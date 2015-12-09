@@ -63,6 +63,15 @@
       <DependentUpon>ButtonBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\ChangeBrowser\Controls\ButtonBar\ButtonBarViewModel.cs" />
+    <Compile Include="Features\ChangeBrowser\Controls\ChangeDetails\ChangeDetails.xaml.cs">
+      <DependentUpon>ChangeDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ChangeBrowser\Controls\ChangeDetails\ChangeDetailsViewModel.cs" />
+    <Compile Include="Features\ChangeBrowser\Controls\ChangeDetails\Resources\ChangeDetailsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangeDetailsResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Features\ChangeBrowser\Controls\ChangeList\ChangeListView.xaml.cs">
       <DependentUpon>ChangeListView.xaml</DependentUpon>
     </Compile>
@@ -97,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Features\ChangeBrowser\Controls\ButtonBar\ButtonBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\ChangeBrowser\Controls\ChangeDetails\ChangeDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -238,6 +251,10 @@
     <Content Include="Features\ChangeBrowser\Resources\ChangeBrowserControlPackage.ico" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Features\ChangeBrowser\Controls\ChangeDetails\Resources\ChangeDetailsResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChangeDetailsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\ChangeBrowser\Controls\ChangeList\Resources\ChangeListResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ChangeListResources.Designer.cs</LastGenOutput>

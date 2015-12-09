@@ -16,11 +16,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+
+    <changeBrowser:ChangeBrowserControl />
     
-    <Grid>
-        <StackPanel>
-            <changeBrowser:ChangeBrowserControl />
-            <settings:GerritSettingsView/>
-        </StackPanel>
-    </Grid>
 </Window>
