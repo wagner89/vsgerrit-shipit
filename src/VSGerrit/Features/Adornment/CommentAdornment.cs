@@ -1,7 +1,8 @@
 ﻿using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
-using Microsoft.VisualStudio.Text.Formatting;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -9,27 +10,29 @@ namespace VSGerrit.Features.Adornment
 {
     internal sealed class CommentAdornment
     {
+        private const string AdornmentName = "CommentAdornment";
+        
         private readonly IAdornmentLayer _layer;
 
         private readonly IWpfTextView _view;
 
-        private readonly Brush _brush;
+        private Brush _brush;
 
-        private readonly Pen _pen;
+        private Pen _pen;
 
         public CommentAdornment(IWpfTextView view)
         {
-            if (view == null)
-            {
-                throw new ArgumentNullException("view");
-            }
+            if (view == null) throw new ArgumentNullException(nameof(view));
 
-            _layer = view.GetAdornmentLayer("CommentAdornment");
+            SetupBrushes();
 
+            _layer = view.GetAdornmentLayer(AdornmentName);
             _view = view;
             _view.LayoutChanged += OnLayoutChanged;
+        }
 
-            // Create the _pen and _brush to color the box behind the a's
+        private void SetupBrushes()
+        {
             _brush = new SolidColorBrush(Color.FromArgb(0x20, 0x00, 0x00, 0xff));
             _brush.Freeze();
 
@@ -41,41 +44,71 @@ namespace VSGerrit.Features.Adornment
 
         internal void OnLayoutChanged(object sender, TextViewLayoutChangedEventArgs e)
         {
-            foreach (ITextViewLine line in e.NewOrReformattedLines)
+            Dictionary<string, IEnumerable<int>> highlighDictionarty = new Dictionary<string, IEnumerable<int>>();
+            //TODO: populate dictionary from simpleton
+            highlighDictionarty["CommentAdornment.cs"] = new List<int> { 1, 3, 7, 15 };
+
+            var currentFilename = GetFilenameFromTextBuffer(_view.TextBuffer);
+
+            if (!highlighDictionarty.ContainsKey(currentFilename))
+                return;
+
+            var linesToHighlight = highlighDictionarty[currentFilename];
+            for (var currentLineIndex = 1; currentLineIndex < _view.TextBuffer.CurrentSnapshot.LineCount; currentLineIndex++)
             {
-                CreateVisuals(line);
+                var line = _view.TextBuffer.CurrentSnapshot.Lines.ElementAt(currentLineIndex - 1);
+
+                if (linesToHighlight.Contains(currentLineIndex))
+                {
+                    CreateVisuals(line);
+                }
             }
         }
 
-        private void CreateVisuals(ITextViewLine line)
+        private string GetFilenameFromTextBuffer(ITextBuffer textBuffer)
         {
-            var textViewLines = _view.TextViewLines;
-
-            // Loop through each character, and place a box around any 'a'
-            for (int charIndex = line.Start; charIndex < line.End; charIndex++)
+            ITextDocument textDocument;
+            var filename = string.Empty;
+            var success = textBuffer.Properties.TryGetProperty(typeof(ITextDocument), out textDocument);
+            if (success)
             {
-                if (_view.TextSnapshot[charIndex] == 'w')
-                {
-                    var span = new SnapshotSpan(_view.TextSnapshot, Span.FromBounds(charIndex, charIndex + 1));
-                    var geometry = textViewLines.GetMarkerGeometry(span);
-                    if (geometry == null) continue;
-                    var drawing = new GeometryDrawing(_brush, _pen, geometry);
-                    drawing.Freeze();
+                filename = new Uri(textDocument.FilePath).Segments.Last();
+            }
+            return filename;
+        }
 
-                    var drawingImage = new DrawingImage(drawing);
-                    drawingImage.Freeze();
+        private void CreateVisuals(ITextSnapshotLine line)
+        {
+            if (line == null)
+                return;
 
-                    var image = new Image
-                    {
-                        Source = drawingImage,
-                    };
+            var textViewLines = _view.TextViewLines;
+            var spanToHighlight = Span.FromBounds(line.Start.Position,
+                                                  line.End.Position == decimal.Zero ? 10 : line.End.Position);
 
-                    // Align the image with the top of the bounds of the text geometry
-                    Canvas.SetLeft(image, geometry.Bounds.Left);
-                    Canvas.SetTop(image, geometry.Bounds.Top);
+            var snapshotSpan = new SnapshotSpan(_view.TextSnapshot, spanToHighlight);
+            SetBoundary(textViewLines, snapshotSpan);
+        }
 
-                    _layer.AddAdornment(AdornmentPositioningBehavior.TextRelative, span, null, image, null);
-                }
+        private void SetBoundary(IWpfTextViewLineCollection textViewLines, SnapshotSpan span)
+        {
+            Geometry g = textViewLines.GetMarkerGeometry(span);
+            if (g != null)
+            {
+                GeometryDrawing drawing = new GeometryDrawing(_brush, _pen, g);
+                drawing.Freeze();
+
+                DrawingImage drawingImage = new DrawingImage(drawing);
+                drawingImage.Freeze();
+
+                Image image = new Image();
+                image.Source = drawingImage;
+
+                //Align the image with the top of the bounds of the text geometry
+                Canvas.SetLeft(image, g.Bounds.Left);
+                Canvas.SetTop(image, g.Bounds.Top);
+
+                _layer.AddAdornment(AdornmentPositioningBehavior.TextRelative, span, null, image, null);
             }
         }
     }

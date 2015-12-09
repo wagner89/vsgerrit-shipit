@@ -52,6 +52,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Features\Adornment\AdornmentHelper.cs" />
     <Compile Include="Features\Adornment\CommentAdornment.cs" />
     <Compile Include="Features\Adornment\CommentAdornmentFactory.cs" />
     <Compile Include="Features\ChangeBrowser\ChangeBrowserToolWindow.cs" />
