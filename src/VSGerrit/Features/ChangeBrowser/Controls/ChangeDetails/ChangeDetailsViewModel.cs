@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -49,7 +48,7 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
 
         private void HandleStartReviewCommand()
         {
-            _gitService.Checkout(_workspaceService.Workspace.CurrentSolution.FilePath, _changeInfo.Revisions.Last().Value.Ref);
+            _gitService.Checkout(_workspaceService.Rootdirectory, _workspaceService.RepositoryName, _changeInfo.Revisions.Last().Value.Ref);
         }
     }
 }
