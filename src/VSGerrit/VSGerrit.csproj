@@ -54,6 +54,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Common\Services\VisualStudioWorkspaceService.cs" />
     <Compile Include="Features\Adornment\AdornmentHelper.cs" />
     <Compile Include="Common\Behaviours\BridgeCommandBehavior.cs" />
     <Compile Include="Common\Commands\CommandRelay.cs" />
@@ -99,7 +100,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GerritSettingsViewLocalization.resx</DependentUpon>
     </Compile>
-    <Compile Include="Features\ChangeBrowser\Services\GitService.cs" />
+    <Compile Include="Common\Services\GitService.cs" />
     <Compile Include="Features\ChangeBrowser\Services\IChangeBrowserNavigationService.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

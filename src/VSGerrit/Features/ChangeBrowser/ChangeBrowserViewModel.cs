@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using VSGerrit.Annotations;
 using VSGerrit.Api.Domain;
 using VSGerrit.Api.Repositories.Changes;
+using VSGerrit.Common.Services;
 using VSGerrit.Features.ChangeBrowser.Controls.ButtonBar;
 using VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails;
 using VSGerrit.Features.ChangeBrowser.Controls.ChangeList;
@@ -21,7 +22,7 @@ namespace VSGerrit.Features.ChangeBrowser
         {
             ButtonBarViewModel = new ButtonBarViewModel(this);
             ChangeListViewModel = new ChangeListViewModel(this, new ChangeRepository());
-            ChangeDetailsViewModel = new ChangeDetailsViewModel(new GitService());
+            ChangeDetailsViewModel = new ChangeDetailsViewModel(new GitService(), VisualStudioWorkspaceService.Instance);
             GerritSettingsViewModel = new GerritSettingsViewModel();
         }
 

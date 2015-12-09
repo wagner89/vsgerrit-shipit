@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Microsoft.VisualStudio.PlatformUI;
 using VSGerrit.Annotations;
 using VSGerrit.Api.Domain;
-using VSGerrit.Features.ChangeBrowser.Services;
+using VSGerrit.Common.Services;
 
 namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
 {
@@ -13,11 +15,13 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
         public event PropertyChangedEventHandler PropertyChanged;
 
         private readonly GitService _gitService;
+        private readonly VisualStudioWorkspaceService _workspaceService;
         private ChangeInfo _changeInfo;
 
-        public ChangeDetailsViewModel(GitService gitService)
+        public ChangeDetailsViewModel(GitService gitService, VisualStudioWorkspaceService workspaceService)
         {
             _gitService = gitService;
+            _workspaceService = workspaceService;
             StartReviewCommand = new DelegateCommand(_ => HandleStartReviewCommand());
         }
 
@@ -45,7 +49,7 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
 
         private void HandleStartReviewCommand()
         {
-            _gitService.Checkout(_changeInfo.CurrentRevision);
+            _gitService.Checkout(_workspaceService.Workspace.CurrentSolution.FilePath, _changeInfo.Revisions.Last().Value.Ref);
         }
     }
 }
