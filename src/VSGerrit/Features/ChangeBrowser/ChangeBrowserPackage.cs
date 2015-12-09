@@ -4,17 +4,10 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel.Design;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Runtime.InteropServices;
-using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.Win32;
+using VSGerrit.Api.Common.Settings;
 
 namespace VSGerrit.Features.ChangeBrowser
 {
@@ -68,6 +61,7 @@ namespace VSGerrit.Features.ChangeBrowser
         protected override void Initialize()
         {
             ChangeBrowserCommand.Initialize(this);
+            ConfigurationProvider.Instance.Initialize(new GerritConfiguration("czaharia", "e0QPJ3wSivllpa4MtJD/0nfGkrwqGI/4pgic3+/B+g", "http://gerrit.ullink.lan:8080/a/"));
             base.Initialize();
         }
 

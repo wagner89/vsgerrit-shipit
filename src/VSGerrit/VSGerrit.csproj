@@ -67,6 +67,11 @@
       <DependentUpon>ChangeListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\ChangeBrowser\Controls\ChangeList\ChangeListViewModel.cs" />
+    <Compile Include="Features\ChangeBrowser\Controls\ChangeList\Resources\ChangeListResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangeListResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Features\ChangeBrowser\Controls\Settings\GerritSettingsView.xaml.cs">
       <DependentUpon>GerritSettingsView.xaml</DependentUpon>
     </Compile>
@@ -233,6 +238,10 @@
     <Content Include="Features\ChangeBrowser\Resources\ChangeBrowserControlPackage.ico" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Features\ChangeBrowser\Controls\ChangeList\Resources\ChangeListResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChangeListResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\ChangeBrowser\Controls\Settings\Resources\GerritSettingsViewLocalization.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GerritSettingsViewLocalization.Designer.cs</LastGenOutput>

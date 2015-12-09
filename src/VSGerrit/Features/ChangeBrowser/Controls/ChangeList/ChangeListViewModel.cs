@@ -1,4 +1,7 @@
-﻿using VSGerrit.Features.ChangeBrowser.Services;
+﻿using System.Collections.Generic;
+using VSGerrit.Api.Domain;
+using VSGerrit.Api.Repositories.Changes;
+using VSGerrit.Features.ChangeBrowser.Services;
 
 namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeList
 {
@@ -6,9 +9,13 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeList
     {
         private readonly IChangeBrowserNavigationService _navigationService;
 
-        public ChangeListViewModel(IChangeBrowserNavigationService navigationService)
+        public ChangeListViewModel(IChangeBrowserNavigationService navigationService, IChangeRepository changeRepository)
         {
             _navigationService = navigationService;
+
+            Changes = changeRepository.GetAll(new ChangeQueryParameters { ReviewedByMe = true }, new ChangeOptionalParameters { DetailedAccounts = true });
         }
+
+        public List<ChangeInfo> Changes { get; set; }
     }
 }

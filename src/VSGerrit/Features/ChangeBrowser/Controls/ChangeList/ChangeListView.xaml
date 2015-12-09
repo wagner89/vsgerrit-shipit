@@ -4,9 +4,71 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.ChangeList"
+             xmlns:vsUI="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.14.0"
+             xmlns:domain="clr-namespace:VSGerrit.Api.Domain;assembly=VSGerrit.Api.Domain"
+             xmlns:resources="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.ChangeList.Resources"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="300" 
+             d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance local:ChangeListViewModel}">
+    
+    <StackPanel Orientation="Vertical">
+        <ItemsControl ItemsSource="{Binding Changes}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1"
+                            CornerRadius="15"
+                            Margin="5 3">
+
+                        <Border.BorderBrush>
+                            <SolidColorBrush Color="{DynamicResource {x:Static vsUI:EnvironmentColors.AccentBorderColorKey}}" />
+                        </Border.BorderBrush>
+
+                        <Grid d:DataContext="{d:DesignInstance domain:ChangeInfo}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="0"
+                                       Text="{x:Static resources:ChangeListResources.Subject}"
+                                       Style="{DynamicResource FieldText}" />
+
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="1"
+                                       Text="{Binding Subject}"
+                                       Style="{DynamicResource FieldValue}" />
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="0"
+                                       Text="{x:Static resources:ChangeListResources.Project}"
+                                       Style="{DynamicResource FieldText}" />
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="1"
+                                       Text="{Binding Project}"
+                                       Style="{DynamicResource FieldValue}" />
+
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="0"
+                                       Text="{x:Static resources:ChangeListResources.Author}"
+                                       Style="{DynamicResource FieldText}" />
+
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="1"
+                                       Text="{Binding Owner.Username}"
+                                       Style="{DynamicResource FieldValue}" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
 </UserControl>
