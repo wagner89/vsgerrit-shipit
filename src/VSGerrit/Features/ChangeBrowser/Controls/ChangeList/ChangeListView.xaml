@@ -29,8 +29,9 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="1"
-                            CornerRadius="15"
+                            CornerRadius="10"
                             Margin="5 3"
+                            Padding="3"
                             Cursor="Hand">
 
                         <Border.InputBindings>

@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using Microsoft.VisualStudio.PlatformUI;
 using VSGerrit.Annotations;
 using VSGerrit.Api.Domain;
 
@@ -13,7 +15,10 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
 
         public ChangeDetailsViewModel()
         {
+            StartReviewCommand = new DelegateCommand(_ => HandleStartReviewCommand());
         }
+
+        public ICommand StartReviewCommand { get; private set; }
 
         public ChangeInfo ChangeInfo
         {
@@ -29,6 +34,11 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void HandleStartReviewCommand()
+        {
+
         }
     }
 }

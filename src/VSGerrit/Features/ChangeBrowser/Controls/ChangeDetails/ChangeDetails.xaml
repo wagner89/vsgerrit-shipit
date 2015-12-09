@@ -13,8 +13,9 @@
              d:DataContext="{d:DesignInstance local:ChangeDetailsViewModel}">
 
     <Border BorderThickness="1"
-            CornerRadius="15"
-            Margin="5 3">
+            CornerRadius="10"
+            Margin="5 3"
+            Padding="3">
         
         <Border.BorderBrush>
             <SolidColorBrush Color="{DynamicResource {x:Static vsUI:EnvironmentColors.AccentBorderColorKey}}" />
@@ -27,6 +28,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -112,6 +114,14 @@
                      Text="{Binding ChangeInfo.ChangeId}"
                      Style="{DynamicResource FieldValue}"
                      IsReadOnly="True" />
+            
+            <TextBlock Grid.Row="7"
+                       Grid.Column="1"
+                       HorizontalAlignment="Right">
+                <Hyperlink Command="{Binding StartReviewCommand}">
+                    Start review
+                </Hyperlink>
+            </TextBlock>
         </Grid>
     </Border>
 </UserControl>
