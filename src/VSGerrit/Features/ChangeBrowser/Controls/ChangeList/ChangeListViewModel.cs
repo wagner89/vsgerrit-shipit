@@ -21,7 +21,13 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeList
                 NumberOfResults = 10
             };
 
-            Changes = changeRepository.GetAll(queryParameters, new ChangeOptionalParameters {DetailedAccounts = true});
+            var optionalParameters = new ChangeOptionalParameters
+            {
+                DetailedAccounts = true,
+                CurrentRevision = true
+            };
+
+            Changes = changeRepository.GetAll(queryParameters, optionalParameters);
 
             ChangeSelectedCommand = new DelegateCommand(changeInfo => HandleChangeSelectedCommand((ChangeInfo)changeInfo));
         }

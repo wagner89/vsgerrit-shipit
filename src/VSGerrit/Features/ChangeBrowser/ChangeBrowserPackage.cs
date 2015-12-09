@@ -6,6 +6,8 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using Microsoft.VisualStudio.ComponentModelHost;
+using Microsoft.VisualStudio.LanguageServices;
 using Microsoft.VisualStudio.Shell;
 using VSGerrit.Api.Common.Settings;
 
@@ -62,6 +64,12 @@ namespace VSGerrit.Features.ChangeBrowser
         {
             ChangeBrowserCommand.Initialize(this);
             ConfigurationProvider.Instance.Initialize(new GerritConfiguration("czaharia", "e0QPJ3wSivllpa4MtJD/0nfGkrwqGI/4pgic3+/B+g", "http://gerrit.ullink.lan:8080/a/"));
+
+            var componentModel = (IComponentModel) GetService(typeof (SComponentModel));
+            var workspace = componentModel.GetService<VisualStudioWorkspace>();
+
+            
+
             base.Initialize();
         }
 

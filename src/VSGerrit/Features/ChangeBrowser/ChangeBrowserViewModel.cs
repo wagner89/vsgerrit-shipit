@@ -21,7 +21,7 @@ namespace VSGerrit.Features.ChangeBrowser
         {
             ButtonBarViewModel = new ButtonBarViewModel(this);
             ChangeListViewModel = new ChangeListViewModel(this, new ChangeRepository());
-            ChangeDetailsViewModel = new ChangeDetailsViewModel();
+            ChangeDetailsViewModel = new ChangeDetailsViewModel(new GitService());
             GerritSettingsViewModel = new GerritSettingsViewModel();
         }
 
