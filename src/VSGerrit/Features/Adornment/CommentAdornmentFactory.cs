@@ -11,7 +11,7 @@ namespace VSGerrit.Features.Adornment
     {
         [Export(typeof(AdornmentLayerDefinition))]
         [Name("CommentAdornment")]
-        [Order(After = PredefinedAdornmentLayers.Selection, Before = PredefinedAdornmentLayers.Text)]
+        [Order(After = PredefinedAdornmentLayers.Text, Before = PredefinedAdornmentLayers.Caret)]
         private AdornmentLayerDefinition _editorAdornmentLayer;
 
         public void TextViewCreated(IWpfTextView textView)

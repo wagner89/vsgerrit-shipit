@@ -88,6 +88,16 @@ namespace VSGerrit.Features.Adornment
 
             var snapshotSpan = new SnapshotSpan(_view.TextSnapshot, spanToHighlight);
             SetBoundary(textViewLines, snapshotSpan);
+            AddComment(textViewLines, snapshotSpan, line);
+        }
+
+        private void AddComment(IWpfTextViewLineCollection textViewLines, SnapshotSpan span, ITextSnapshotLine line)
+        {
+            Geometry g = textViewLines.GetMarkerGeometry(span);
+            var commentPopup = new CommentPopup.CommentPopup();
+            Canvas.SetTop(commentPopup, g.Bounds.Bottom);
+            Canvas.SetLeft(commentPopup, g.Bounds.Left);
+            _layer.AddAdornment(AdornmentPositioningBehavior.TextRelative, line.Extent, null, commentPopup, null);
         }
 
         private void SetBoundary(IWpfTextViewLineCollection textViewLines, SnapshotSpan span)
