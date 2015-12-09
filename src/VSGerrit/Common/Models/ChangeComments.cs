@@ -33,7 +33,7 @@ namespace VSGerrit.Common.Models
 
         public IEnumerable<FileComment> GetCommentsForFile(string filename)
         {
-            return _filesWithComments.First(file => file.Filename == filename).Comments;
+            return _filesWithComments.First(file => file.Filename.Contains(filename)).Comments;
         }
     }
 }

@@ -21,6 +21,7 @@
     </Window.Resources>
 
     
-    <commentPopup:CommentPopup/>
+    <!--<commentPopup:CommentPopup/>-->
+    <changeBrowser:ChangeBrowserControl/>
 
 </Window>

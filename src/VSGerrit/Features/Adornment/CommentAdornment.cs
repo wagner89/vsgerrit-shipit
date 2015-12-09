@@ -49,7 +49,7 @@ namespace VSGerrit.Features.Adornment
 
             var change = ChangeCommentService.Instance.GetCommentsForCurrentChange();
 
-            if (!change.CommentedFiles.Contains(currentFilename))
+            if (!change.CommentedFiles.Any(file => file.Contains(currentFilename)))
                 return;
 
             foreach (var comment in change.GetCommentsForFile(currentFilename))

@@ -6,6 +6,8 @@ using System.Windows.Input;
 using Microsoft.VisualStudio.PlatformUI;
 using VSGerrit.Annotations;
 using VSGerrit.Api.Domain;
+using VSGerrit.Api.Repositories.Revisions;
+using VSGerrit.Common.Models;
 using VSGerrit.Common.Services;
 
 namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
@@ -52,6 +54,23 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
             _gitService.Checkout(_workspaceService.Rootdirectory, _workspaceService.RepositoryName, _changeInfo.Revisions.Last().Value.Ref);
 
             OpenModifiedFiles();
+
+            UpdateVisibleComments();
+        }
+
+        private void UpdateVisibleComments()
+        {
+            var revisionRepository = new RevisionRepository();
+
+            var currentRevisionNumber = ChangeInfo.Revisions[ChangeInfo.CurrentRevision].Number.ToString();
+            var comments = revisionRepository.GetComments(ChangeInfo.ChangeId, currentRevisionNumber);
+
+            var result = new ChangeComments();
+            comments.Select(file => new FileWithComments(file.Key, file.Value.Select(comment => new FileComment(comment.Range.StartLine, comment.Message))))
+                .ToList()
+                .ForEach(result.AddFile);
+
+            ChangeCommentService.Instance.UpdateChangeComments(result);
         }
 
         private void OpenModifiedFiles()

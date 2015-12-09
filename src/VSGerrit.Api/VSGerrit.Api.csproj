@@ -64,6 +64,8 @@
     <Compile Include="Repositories\Changes\ChangeRepository.cs" />
     <Compile Include="Repositories\Changes\IChangeRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\Revisions\IRevisionRepository.cs" />
+    <Compile Include="Repositories\Revisions\RevisionRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
