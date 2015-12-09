@@ -13,7 +13,7 @@ namespace VSGerrit.Api.Domain
 
         public int Line { get; set; }
 
-        public string Range { get; set; }
+        public CommentRange Range { get; set; }
 
         [JsonProperty("in_reply_to")]
         public string InReplyTo { get; set; }
