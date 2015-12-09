@@ -120,6 +120,18 @@
   <data name="Author" xml:space="preserve">
     <value>Author:</value>
   </data>
+  <data name="ChangeId" xml:space="preserve">
+    <value>ChangeId:</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Created:</value>
+  </data>
+  <data name="Mergeable" xml:space="preserve">
+    <value>Mergeable:</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Number:</value>
+  </data>
   <data name="Project" xml:space="preserve">
     <value>Project:</value>
   </data>

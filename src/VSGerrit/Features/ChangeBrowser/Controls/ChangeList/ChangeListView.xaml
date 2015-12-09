@@ -30,7 +30,8 @@
                 <DataTemplate>
                     <Border BorderThickness="1"
                             CornerRadius="15"
-                            Margin="5 3">
+                            Margin="5 3"
+                            Cursor="Hand">
 
                         <Border.InputBindings>
                             <MouseBinding MouseAction="LeftClick"

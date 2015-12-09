@@ -29,6 +29,10 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -62,6 +66,50 @@
             <TextBox Grid.Row="2"
                      Grid.Column="1"
                      Text="{Binding ChangeInfo.Owner.Username}"
+                     Style="{DynamicResource FieldValue}"
+                     IsReadOnly="True" />
+
+            <TextBlock Grid.Row="3"
+                       Grid.Column="0"
+                       Text="{x:Static resources:ChangeListResources.Created}"
+                       Style="{DynamicResource FieldText}" />
+
+            <TextBox Grid.Row="3"
+                     Grid.Column="1"
+                     Text="{Binding ChangeInfo.Created}"
+                     Style="{DynamicResource FieldValue}"
+                     IsReadOnly="True" />
+
+            <TextBlock Grid.Row="4"
+                       Grid.Column="0"
+                       Text="{x:Static resources:ChangeListResources.Mergeable}"
+                       Style="{DynamicResource FieldText}" />
+
+            <TextBox Grid.Row="4"
+                     Grid.Column="1"
+                     Text="{Binding ChangeInfo.Mergeable}"
+                     Style="{DynamicResource FieldValue}"
+                     IsReadOnly="True" />
+
+            <TextBlock Grid.Row="5"
+                       Grid.Column="0"
+                       Text="{x:Static resources:ChangeListResources.Number}"
+                       Style="{DynamicResource FieldText}" />
+
+            <TextBox Grid.Row="5"
+                     Grid.Column="1"
+                     Text="{Binding ChangeInfo.Number}"
+                     Style="{DynamicResource FieldValue}"
+                     IsReadOnly="True" />
+
+            <TextBlock Grid.Row="6"
+                       Grid.Column="0"
+                       Text="{x:Static resources:ChangeListResources.ChangeId}"
+                       Style="{DynamicResource FieldText}" />
+
+            <TextBox Grid.Row="6"
+                     Grid.Column="1"
+                     Text="{Binding ChangeInfo.ChangeId}"
                      Style="{DynamicResource FieldValue}"
                      IsReadOnly="True" />
         </Grid>

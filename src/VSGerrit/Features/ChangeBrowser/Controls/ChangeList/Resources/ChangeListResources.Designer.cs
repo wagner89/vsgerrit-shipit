@@ -71,6 +71,42 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeList.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ChangeId:.
+        /// </summary>
+        public static string ChangeId {
+            get {
+                return ResourceManager.GetString("ChangeId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created:.
+        /// </summary>
+        public static string Created {
+            get {
+                return ResourceManager.GetString("Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mergeable:.
+        /// </summary>
+        public static string Mergeable {
+            get {
+                return ResourceManager.GetString("Mergeable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number:.
+        /// </summary>
+        public static string Number {
+            get {
+                return ResourceManager.GetString("Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project:.
         /// </summary>
         public static string Project {

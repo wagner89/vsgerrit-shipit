@@ -1,10 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using Microsoft.VisualStudio.PlatformUI;
 using VSGerrit.Annotations;
 using VSGerrit.Api.Domain;
-using VSGerrit.Features.ChangeBrowser.Services;
 
 namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
 {
