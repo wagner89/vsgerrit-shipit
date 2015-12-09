@@ -15,8 +15,8 @@
                 Value="2" />
     </Style>
 
-    <Style TargetType="Button">
+    <!--<Style TargetType="Button">
         <Setter Property="Margin"
                 Value="3" />
-    </Style>
+    </Style>-->
 </ResourceDictionary>
