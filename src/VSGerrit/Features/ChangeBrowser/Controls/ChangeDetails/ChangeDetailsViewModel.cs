@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -49,6 +50,21 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
         private void HandleStartReviewCommand()
         {
             _gitService.Checkout(_workspaceService.Rootdirectory, _workspaceService.RepositoryName, _changeInfo.Revisions.Last().Value.Ref);
+
+            OpenModifiedFiles();
+        }
+
+        private void OpenModifiedFiles()
+        {
+            var rootDirectory = _workspaceService.Rootdirectory;
+            var changedFiles = _changeInfo.Revisions.Last().Value.Files.Keys.Select(filename => Path.Combine(rootDirectory, filename).NormalizePath());
+
+            var documentIds = changedFiles.SelectMany(changedFile => _workspaceService.Workspace.CurrentSolution.GetDocumentIdsWithFilePath(changedFile)).ToList();
+
+            foreach (var documentId in documentIds)
+            {
+                _workspaceService.Workspace.OpenDocument(documentId);
+            }
         }
     }
 }
