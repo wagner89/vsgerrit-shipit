@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Media;
+using VSGerrit.Common.Services;
 using VSGerrit.Features.Adornment.CommentPopup;
 
 namespace VSGerrit.Features.Adornment
@@ -12,7 +12,7 @@ namespace VSGerrit.Features.Adornment
     internal sealed class CommentAdornment
     {
         private const string AdornmentName = "CommentAdornment";
-        
+
         private readonly IAdornmentLayer _layer;
 
         private readonly IWpfTextView _view;
@@ -45,22 +45,17 @@ namespace VSGerrit.Features.Adornment
 
         internal void OnLayoutChanged(object sender, TextViewLayoutChangedEventArgs e)
         {
-            var highlighDictionarty = new Dictionary<string, IEnumerable<Tuple<int,string>>>();
-            //TODO: populate dictionary from simpleton
-            highlighDictionarty["CommentAdornment.cs"] = new List<Tuple<int,string>>
-            {
-                new Tuple<int, string>(2,"The first comment"),
-                new Tuple<int, string>(4,"The second comment")
-            };
-
             var currentFilename = GetFilenameFromTextBuffer(_view.TextBuffer);
-            if (!highlighDictionarty.ContainsKey(currentFilename))
+
+            var change = ChangeCommentService.Instance.GetCommentsForCurrentChange();
+
+            if (!change.CommentedFiles.Contains(currentFilename))
                 return;
 
-            foreach (var comment in highlighDictionarty[currentFilename])
+            foreach (var comment in change.GetCommentsForFile(currentFilename))
             {
-                var line = _view.TextBuffer.CurrentSnapshot.Lines.ElementAt(comment.Item1 - 1);
-                CreateVisuals(line, comment.Item2);
+                var line = _view.TextBuffer.CurrentSnapshot.Lines.ElementAt(comment.LineNumber - 1);
+                CreateVisuals(line, comment.CommentText);
             }
         }
 
@@ -112,7 +107,7 @@ namespace VSGerrit.Features.Adornment
             var drawingImage = new DrawingImage(drawing);
             drawingImage.Freeze();
 
-            var image = new Image {Source = drawingImage};
+            var image = new Image { Source = drawingImage };
 
             //Align the image with the top of the bounds of the text geometry
             Canvas.SetLeft(image, g.Bounds.Left);

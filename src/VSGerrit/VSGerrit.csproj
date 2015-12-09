@@ -54,6 +54,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Common\Models\ChangeComments.cs" />
+    <Compile Include="Common\Models\FileComment.cs" />
+    <Compile Include="Common\Models\FileWithComments.cs" />
+    <Compile Include="Common\Services\ChangeCommentService.cs" />
     <Compile Include="Common\Services\VisualStudioWorkspaceService.cs" />
     <Compile Include="Features\Adornment\AdornmentHelper.cs" />
     <Compile Include="Common\Behaviours\BridgeCommandBehavior.cs" />
