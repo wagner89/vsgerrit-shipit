@@ -14,6 +14,14 @@
              Foreground="{DynamicResource VsBrush.WindowText}"
              d:DataContext="{d:DesignInstance settings:GerritSettingsViewModel}">
 
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Resources/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -29,24 +37,30 @@
 
         <TextBlock Grid.Column="0"
                    Grid.Row="0"
-                   Text="{x:Static resources:GerritSettingsViewLocalization.Username}" />
+                   Text="{x:Static resources:GerritSettingsViewLocalization.Username}"
+                   Style="{StaticResource FieldText}"/>
         <TextBox Grid.Column="1"
                  Grid.Row="0"
-                 Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
+                 Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                 Style="{StaticResource FieldValue}"/>
 
         <TextBlock Grid.Column="0"
                    Grid.Row="1"
-                   Text="{x:Static resources:GerritSettingsViewLocalization.Password}" />
+                   Text="{x:Static resources:GerritSettingsViewLocalization.Password}"
+                   Style="{StaticResource FieldText}"/>
         <TextBox Grid.Column="1"
                  Grid.Row="1"
-                 Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" />
+                 Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
+                 Style="{StaticResource FieldValue}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="2"
-                   Text="{x:Static resources:GerritSettingsViewLocalization.GerritApiUrl}" />
+                   Text="{x:Static resources:GerritSettingsViewLocalization.GerritApiUrl}"
+                   Style="{StaticResource FieldText}" />
         <TextBox Grid.Column="1"
                  Grid.Row="2"
-                 Text="{Binding GerritApiUrl, UpdateSourceTrigger=PropertyChanged}" />
+                 Text="{Binding GerritApiUrl, UpdateSourceTrigger=PropertyChanged}"
+                 Style="{StaticResource FieldValue}" />
 
         <Button Grid.Column="1"
                 Grid.Row="3"
