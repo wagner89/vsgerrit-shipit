@@ -4,15 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.ButtonBar"
-             xmlns:mahApps="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d"
              d:DesignWidth="300"
-             Height="30">
-    
+             Height="30"
+             d:DataContext="{d:DesignInstance local:ButtonBarViewModel}">
+
     <UserControl.Resources>
-        <Image x:Key="SettingsIcon" Source="Resources/settingsIcon.png"/>
+        <Image x:Key="SettingsIcon"
+               Source="Resources/settingsIcon.png" />
     </UserControl.Resources>
-    
+
     <Grid Height="30">
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right"
@@ -21,7 +22,6 @@
             <Button Width="25"
                     Margin="2.5"
                     Content="{StaticResource SettingsIcon}">
-
             </Button>
         </StackPanel>
     </Grid>
