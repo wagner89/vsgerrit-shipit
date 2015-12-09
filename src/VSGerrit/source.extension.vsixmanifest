@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="VSGerrit.Costin Zaharia.e0f36a72-36f7-4d62-abc4-c4d9c9a4a095" Version="1.0" Language="en-US" Publisher="Costin Zaharia" />
+    <Identity Id="e0f36a72-36f7-4d62-abc4-c4d9c9a4a095" Version="1.0" Language="en-US" Publisher="Costin Zaharia" />
     <DisplayName>vsgerrit</DisplayName>
     <Description>VSGERRIT (name pending) is Visual Studio extesion, which allows you to quickly grab changes from gerrit, view the changes and comments inline, reply to comments, submit ratings, fix issues and commit them back, all from the warmth and comfort of your favorite IDE.</Description>
   </Metadata>
