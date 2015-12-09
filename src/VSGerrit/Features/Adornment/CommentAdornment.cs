@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Media;
+using VSGerrit.Features.Adornment.CommentPopup;
 
 namespace VSGerrit.Features.Adornment
 {
@@ -44,24 +45,22 @@ namespace VSGerrit.Features.Adornment
 
         internal void OnLayoutChanged(object sender, TextViewLayoutChangedEventArgs e)
         {
-            Dictionary<string, IEnumerable<int>> highlighDictionarty = new Dictionary<string, IEnumerable<int>>();
+            var highlighDictionarty = new Dictionary<string, IEnumerable<Tuple<int,string>>>();
             //TODO: populate dictionary from simpleton
-            highlighDictionarty["CommentAdornment.cs"] = new List<int> { 1, 3, 7, 15 };
+            highlighDictionarty["CommentAdornment.cs"] = new List<Tuple<int,string>>
+            {
+                new Tuple<int, string>(2,"The first comment"),
+                new Tuple<int, string>(4,"The second comment")
+            };
 
             var currentFilename = GetFilenameFromTextBuffer(_view.TextBuffer);
-
             if (!highlighDictionarty.ContainsKey(currentFilename))
                 return;
 
-            var linesToHighlight = highlighDictionarty[currentFilename];
-            for (var currentLineIndex = 1; currentLineIndex < _view.TextBuffer.CurrentSnapshot.LineCount; currentLineIndex++)
+            foreach (var comment in highlighDictionarty[currentFilename])
             {
-                var line = _view.TextBuffer.CurrentSnapshot.Lines.ElementAt(currentLineIndex - 1);
-
-                if (linesToHighlight.Contains(currentLineIndex))
-                {
-                    CreateVisuals(line);
-                }
+                var line = _view.TextBuffer.CurrentSnapshot.Lines.ElementAt(comment.Item1 - 1);
+                CreateVisuals(line, comment.Item2);
             }
         }
 
@@ -77,7 +76,7 @@ namespace VSGerrit.Features.Adornment
             return filename;
         }
 
-        private void CreateVisuals(ITextSnapshotLine line)
+        private void CreateVisuals(ITextSnapshotLine line, string comment)
         {
             if (line == null)
                 return;
@@ -88,38 +87,38 @@ namespace VSGerrit.Features.Adornment
 
             var snapshotSpan = new SnapshotSpan(_view.TextSnapshot, spanToHighlight);
             SetBoundary(textViewLines, snapshotSpan);
-            AddComment(textViewLines, snapshotSpan, line);
+            AddComment(textViewLines, snapshotSpan, line, comment);
         }
 
-        private void AddComment(IWpfTextViewLineCollection textViewLines, SnapshotSpan span, ITextSnapshotLine line)
+        private void AddComment(IWpfTextViewLineCollection textViewLines, SnapshotSpan span, ITextSnapshotLine line, string comment)
         {
-            Geometry g = textViewLines.GetMarkerGeometry(span);
-            var commentPopup = new CommentPopup.CommentPopup();
-            Canvas.SetTop(commentPopup, g.Bounds.Bottom);
-            Canvas.SetLeft(commentPopup, g.Bounds.Left);
+            var g = textViewLines.GetMarkerGeometry(span);
+            if (g == null) return;
+
+            var commentPopup = new CommentPopup.CommentPopup(new CommentPopupViewModel(comment));
+            Canvas.SetTop(commentPopup, g.Bounds.Top - 2);
+            Canvas.SetLeft(commentPopup, g.Bounds.Right + 5);
             _layer.AddAdornment(AdornmentPositioningBehavior.TextRelative, line.Extent, null, commentPopup, null);
         }
 
         private void SetBoundary(IWpfTextViewLineCollection textViewLines, SnapshotSpan span)
         {
-            Geometry g = textViewLines.GetMarkerGeometry(span);
-            if (g != null)
-            {
-                GeometryDrawing drawing = new GeometryDrawing(_brush, _pen, g);
-                drawing.Freeze();
+            var g = textViewLines.GetMarkerGeometry(span);
+            if (g == null) return;
 
-                DrawingImage drawingImage = new DrawingImage(drawing);
-                drawingImage.Freeze();
+            var drawing = new GeometryDrawing(_brush, _pen, g);
+            drawing.Freeze();
 
-                Image image = new Image();
-                image.Source = drawingImage;
+            var drawingImage = new DrawingImage(drawing);
+            drawingImage.Freeze();
 
-                //Align the image with the top of the bounds of the text geometry
-                Canvas.SetLeft(image, g.Bounds.Left);
-                Canvas.SetTop(image, g.Bounds.Top);
+            var image = new Image {Source = drawingImage};
 
-                _layer.AddAdornment(AdornmentPositioningBehavior.TextRelative, span, null, image, null);
-            }
+            //Align the image with the top of the bounds of the text geometry
+            Canvas.SetLeft(image, g.Bounds.Left);
+            Canvas.SetTop(image, g.Bounds.Top);
+
+            _layer.AddAdornment(AdornmentPositioningBehavior.TextRelative, span, null, image, null);
         }
     }
 }

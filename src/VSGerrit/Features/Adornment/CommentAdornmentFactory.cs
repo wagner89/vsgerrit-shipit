@@ -11,12 +11,11 @@ namespace VSGerrit.Features.Adornment
     {
         [Export(typeof(AdornmentLayerDefinition))]
         [Name("CommentAdornment")]
-        [Order(After = PredefinedAdornmentLayers.Text, Before = PredefinedAdornmentLayers.Caret)]
+        [Order(After = PredefinedAdornmentLayers.Selection, Before = PredefinedAdornmentLayers.Text)]
         private AdornmentLayerDefinition _editorAdornmentLayer;
 
         public void TextViewCreated(IWpfTextView textView)
         {
-            // The adornment will listen to any event that changes the layout (text changes, scrolling, etc)
             new CommentAdornment(textView);
         }
     }

@@ -7,6 +7,7 @@
         xmlns:settings="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.Settings;assembly=VSGerrit"
         xmlns:changeBrowser="clr-namespace:VSGerrit.Features.ChangeBrowser;assembly=VSGerrit"
         xmlns:changeList="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.ChangeList;assembly=VSGerrit"
+        xmlns:commentPopup="clr-namespace:VSGerrit.Features.Adornment.CommentPopup;assembly=VSGerrit"
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="600" 
@@ -19,6 +20,7 @@
         </ResourceDictionary>
     </Window.Resources>
 
-    <changeBrowser:ChangeBrowserControl />
     
+    <commentPopup:CommentPopup/>
+
 </Window>
