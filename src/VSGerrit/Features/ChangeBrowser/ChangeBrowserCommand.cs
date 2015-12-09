@@ -15,7 +15,7 @@ namespace VSGerrit.Features.ChangeBrowser
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class ChangeBrowserControlCommand
+    internal sealed class ChangeBrowserCommand
     {
         /// <summary>
         /// Command ID.
@@ -33,11 +33,11 @@ namespace VSGerrit.Features.ChangeBrowser
         private readonly Package package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChangeBrowserControlCommand"/> class.
+        /// Initializes a new instance of the <see cref="ChangeBrowserCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
-        private ChangeBrowserControlCommand(Package package)
+        private ChangeBrowserCommand(Package package)
         {
             if (package == null)
             {
@@ -58,7 +58,7 @@ namespace VSGerrit.Features.ChangeBrowser
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static ChangeBrowserControlCommand Instance
+        public static ChangeBrowserCommand Instance
         {
             get;
             private set;
@@ -81,7 +81,7 @@ namespace VSGerrit.Features.ChangeBrowser
         /// <param name="package">Owner package, not null.</param>
         public static void Initialize(Package package)
         {
-            Instance = new ChangeBrowserControlCommand(package);
+            Instance = new ChangeBrowserCommand(package);
         }
 
         /// <summary>

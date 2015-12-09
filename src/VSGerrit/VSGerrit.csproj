@@ -53,11 +53,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Features\ChangeBrowser\ChangeBrowserToolWindow.cs" />
-    <Compile Include="Features\ChangeBrowser\ChangeBrowserControlCommand.cs" />
-    <Compile Include="Features\ChangeBrowser\ChangeBrowserControlControl.xaml.cs">
-      <DependentUpon>ChangeBrowserControlControl.xaml</DependentUpon>
+    <Compile Include="Features\ChangeBrowser\ChangeBrowserCommand.cs" />
+    <Compile Include="Features\ChangeBrowser\ChangeBrowserControl.xaml.cs">
+      <DependentUpon>ChangeBrowserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\ChangeBrowser\ChangeBrowserControlPackage.cs" />
+    <Compile Include="Features\ChangeBrowser\ChangeBrowserPackage.cs" />
     <Compile Include="Features\ChangeBrowser\Controls\ButtonBar\ButtonBar.xaml.cs">
       <DependentUpon>ButtonBar.xaml</DependentUpon>
     </Compile>
@@ -79,7 +79,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Features\ChangeBrowser\ChangeBrowserControlControl.xaml">
+    <Page Include="Features\ChangeBrowser\ChangeBrowserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,9 +232,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="Features\ChangeBrowser\Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\VSGerrit.Api.Domain\VSGerrit.Api.Domain.csproj">
       <Project>{cb6fb98f-bf1a-4337-a7bc-36bb3ba8f28f}</Project>

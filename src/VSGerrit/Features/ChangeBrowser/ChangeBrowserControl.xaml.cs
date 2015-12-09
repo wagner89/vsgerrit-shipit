@@ -13,12 +13,12 @@ namespace VSGerrit.Features.ChangeBrowser
     /// <summary>
     /// Interaction logic for ChangeBrowserControlControl.
     /// </summary>
-    public partial class ChangeBrowserControlControl : UserControl
+    public partial class ChangeBrowserControl : UserControl
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChangeBrowserControlControl"/> class.
+        /// Initializes a new instance of the <see cref="ChangeBrowserControl"/> class.
         /// </summary>
-        public ChangeBrowserControlControl()
+        public ChangeBrowserControl()
         {
             this.InitializeComponent();
         }
