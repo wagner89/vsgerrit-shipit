@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Input;
+using Microsoft.VisualStudio.PlatformUI;
 using VSGerrit.Api.Domain;
 using VSGerrit.Api.Repositories.Changes;
 using VSGerrit.Features.ChangeBrowser.Services;
@@ -20,8 +22,17 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeList
             };
 
             Changes = changeRepository.GetAll(queryParameters, new ChangeOptionalParameters {DetailedAccounts = true});
+
+            ChangeSelectedCommand = new DelegateCommand(changeInfo => HandleChangeSelectedCommand((ChangeInfo)changeInfo));
         }
 
+        public ICommand ChangeSelectedCommand { get; private set; }
+
         public List<ChangeInfo> Changes { get; set; }
+
+        private void HandleChangeSelectedCommand(ChangeInfo changeInfo)
+        {
+            _navigationService.NavigateToDetails(changeInfo);
+        }
     }
 }

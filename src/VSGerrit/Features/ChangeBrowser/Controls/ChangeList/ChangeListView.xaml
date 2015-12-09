@@ -7,18 +7,36 @@
              xmlns:vsUI="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.14.0"
              xmlns:domain="clr-namespace:VSGerrit.Api.Domain;assembly=VSGerrit.Api.Domain"
              xmlns:resources="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.ChangeList.Resources"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviours="clr-namespace:VSGerrit.Common.Behaviours"
+             xmlns:commands="clr-namespace:VSGerrit.Common.Commands"
              mc:Ignorable="d" 
              d:DesignHeight="300" 
              d:DesignWidth="300"
              d:DataContext="{d:DesignInstance local:ChangeListViewModel}">
+  
+    <UserControl.Resources>
+        <commands:CommandRelay x:Key="ChangeSelectedCommandRelay" />
+    </UserControl.Resources>
     
     <StackPanel Orientation="Vertical">
+        <i:Interaction.Behaviors>
+            <behaviours:BridgeCommandBehavior CommandSource="{Binding ChangeSelectedCommand}"
+                                              CommandRelay="{StaticResource ChangeSelectedCommandRelay}"/>
+        </i:Interaction.Behaviors>
+        
         <ItemsControl ItemsSource="{Binding Changes}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="1"
                             CornerRadius="15"
                             Margin="5 3">
+
+                        <Border.InputBindings>
+                            <MouseBinding MouseAction="LeftClick"
+                                          Command="{StaticResource ChangeSelectedCommandRelay}"
+                                          CommandParameter="{Binding}" />
+                        </Border.InputBindings>
 
                         <Border.BorderBrush>
                             <SolidColorBrush Color="{DynamicResource {x:Static vsUI:EnvironmentColors.AccentBorderColorKey}}" />

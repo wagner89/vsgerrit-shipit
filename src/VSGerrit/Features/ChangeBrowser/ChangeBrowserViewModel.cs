@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using VSGerrit.Annotations;
+using VSGerrit.Api.Domain;
 using VSGerrit.Api.Repositories.Changes;
 using VSGerrit.Features.ChangeBrowser.Controls.ButtonBar;
 using VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails;
@@ -12,6 +13,8 @@ namespace VSGerrit.Features.ChangeBrowser
 {
     public class ChangeBrowserViewModel : IChangeBrowserNavigationService, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private bool _isSettingsVisible;
 
         public ChangeBrowserViewModel()
@@ -45,15 +48,14 @@ namespace VSGerrit.Features.ChangeBrowser
             IsSettingsVisible = !IsSettingsVisible;
         }
 
-        public void NavigateToDetails()
+        public void NavigateToDetails(ChangeInfo changeInfo)
         {
+            ChangeDetailsViewModel.ChangeInfo = changeInfo;
         }
 
         public void NavigateToList()
         {
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -52,6 +52,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Common\Behaviours\BridgeCommandBehavior.cs" />
+    <Compile Include="Common\Commands\CommandRelay.cs" />
+    <Compile Include="Common\Commands\ValueEventArgs.cs" />
     <Compile Include="Common\Converters\BooleanVisibilityConverter.cs" />
     <Compile Include="Features\ChangeBrowser\ChangeBrowserToolWindow.cs" />
     <Compile Include="Features\ChangeBrowser\ChangeBrowserCommand.cs" />
