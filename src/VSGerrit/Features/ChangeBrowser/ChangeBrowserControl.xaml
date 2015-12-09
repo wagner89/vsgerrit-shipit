@@ -7,6 +7,9 @@
              xmlns:changeBrowser="clr-namespace:VSGerrit.Features.ChangeBrowser"
              xmlns:changeList="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.ChangeList"
              xmlns:changeDetails="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails"
+             xmlns:settings="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.Settings"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:converters="clr-namespace:VSGerrit.Common.Converters"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
              Name="VsgerritChangeBrowser"
@@ -17,6 +20,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <converters:BooleanVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
     
@@ -29,8 +34,14 @@
 
         <buttonBar:ButtonBar Grid.Row="0" DataContext="{Binding ButtonBarViewModel}" />
 
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Grid.Row="1"
+                      Visibility="{Binding IsSettingsVisible, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=true}">
             <changeList:ChangeListView DataContext="{Binding ChangeListViewModel}"/>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Row="1"
+                      Visibility="{Binding IsSettingsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <settings:GerritSettingsView DataContext="{Binding GerritSettingsViewModel}" />
         </ScrollViewer>
         
         <changeDetails:ChangeDetails Grid.Row="2" DataContext="{Binding ChangeDetailsViewModel}" />

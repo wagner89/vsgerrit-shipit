@@ -6,21 +6,20 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ButtonBar
 {
     public class ButtonBarViewModel
     {
-        private readonly IChangeBrowserNavigationService _navService;
+        private readonly IChangeBrowserNavigationService _navigationService;
 
-        public ButtonBarViewModel(IChangeBrowserNavigationService navService)
+        public ButtonBarViewModel(IChangeBrowserNavigationService navigationService)
         {
-            _navService = navService;
-            SettingsButtonClickCommand = new DelegateCommand(_ => ToggleSettingsView(), _ => true);
+            _navigationService = navigationService;
+
+            NavigateToSetingsCommand = new DelegateCommand(_ => HandleNavigateToSettingsCommand(), _ => true);
         }
 
-        public ICommand SettingsButtonClickCommand { get; set; }
+        public ICommand NavigateToSetingsCommand { get; set; }
 
-        
-
-        private void ToggleSettingsView()
+        private void HandleNavigateToSettingsCommand()
         {
-            _navService.NavigateToSettings();
+            _navigationService.NavigateToSettings();
         }
     }
 }

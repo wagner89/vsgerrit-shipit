@@ -52,6 +52,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Common\Converters\BooleanVisibilityConverter.cs" />
     <Compile Include="Features\ChangeBrowser\ChangeBrowserToolWindow.cs" />
     <Compile Include="Features\ChangeBrowser\ChangeBrowserCommand.cs" />
     <Compile Include="Features\ChangeBrowser\ChangeBrowserControl.xaml.cs">
@@ -90,8 +91,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GerritSettingsViewLocalization.resx</DependentUpon>
     </Compile>
-    <Compile Include="Features\ChangeBrowser\Services\ChangeBrowserNavigationService.cs" />
     <Compile Include="Features\ChangeBrowser\Services\IChangeBrowserNavigationService.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
