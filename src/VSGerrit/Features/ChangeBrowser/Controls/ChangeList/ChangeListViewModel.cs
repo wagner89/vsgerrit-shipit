@@ -24,7 +24,9 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeList
             var optionalParameters = new ChangeOptionalParameters
             {
                 DetailedAccounts = true,
-                CurrentRevision = true
+                CurrentRevision = true,
+                AllFiles = true,
+                AllRevisions = true
             };
 
             Changes = changeRepository.GetAll(queryParameters, optionalParameters);
