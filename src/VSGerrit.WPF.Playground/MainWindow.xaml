@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VSGerrit.WPF.Playground"
+        xmlns:settings="clr-namespace:VSGerrit.Features.ChangeBrowser.Controls.Settings;assembly=VSGerrit"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <settings:GerritSettingsView/>
     </Grid>
 </Window>

@@ -95,6 +95,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VSGerrit.Api.Domain\VSGerrit.Api.Domain.csproj">
+      <Project>{cb6fb98f-bf1a-4337-a7bc-36bb3ba8f28f}</Project>
+      <Name>VSGerrit.Api.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VSGerrit.Api\VSGerrit.Api.csproj">
+      <Project>{32f446d3-7bdc-4054-92f0-cb66fb31470f}</Project>
+      <Name>VSGerrit.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VSGerrit\VSGerrit.csproj">
+      <Project>{8d7d4a4c-56b6-431e-b0b8-7f1eacc44065}</Project>
+      <Name>VSGerrit</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

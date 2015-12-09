@@ -9,10 +9,11 @@
     <UseCodebase>true</UseCodebase>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -57,10 +58,18 @@
       <DependentUpon>ChangeBrowserControlControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\ChangeBrowser\ChangeBrowserControlPackage.cs" />
+    <Compile Include="Features\ChangeBrowser\Controls\Settings\GerritSettingsView.xaml.cs">
+      <DependentUpon>GerritSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ChangeBrowser\Controls\Settings\GerritSettingsViewModel.cs" />
+    <Compile Include="Features\ChangeBrowser\Controls\Settings\Resources\GerritSettingsViewLocalization.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GerritSettingsViewLocalization.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Key.snk" />
     <None Include="packages.config" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
@@ -68,6 +77,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Features\ChangeBrowser\ChangeBrowserControlControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\ChangeBrowser\Controls\Settings\GerritSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,15 +209,17 @@
     <Content Include="Features\ChangeBrowser\Resources\ChangeBrowserControlPackage.ico" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Features\ChangeBrowser\Controls\Settings\Resources\GerritSettingsViewLocalization.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GerritSettingsViewLocalization.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\ChangeBrowser\VSPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\ChangeBrowser\Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\VSGerrit.Api.Domain\VSGerrit.Api.Domain.csproj">
       <Project>{cb6fb98f-bf1a-4337-a7bc-36bb3ba8f28f}</Project>
