@@ -66,7 +66,7 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
             var comments = revisionRepository.GetComments(ChangeInfo.ChangeId, currentRevisionNumber);
 
             var result = new ChangeComments();
-            comments.Select(file => new FileWithComments(file.Key, file.Value.Select(comment => new FileComment(comment.Range.StartLine, comment.Message))))
+            comments.Select(file => new FileWithComments(file.Key, file.Value.Select(comment => new FileComment(comment.Range.StartLine, $"{comment.Message} ({comment.Author.Username})"))))
                 .ToList()
                 .ForEach(result.AddFile);
 
