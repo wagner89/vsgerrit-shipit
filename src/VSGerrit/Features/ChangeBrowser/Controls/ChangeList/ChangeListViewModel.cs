@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using Microsoft.VisualStudio.PlatformUI;
 using VSGerrit.Api.Domain;
 using VSGerrit.Api.Repositories.Changes;
+using VSGerrit.Common.Services;
 using VSGerrit.Features.ChangeBrowser.Services;
 
 namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeList
@@ -29,7 +31,8 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeList
                 AllRevisions = true
             };
 
-            Changes = changeRepository.GetAll(queryParameters, optionalParameters);
+            var projectName = VisualStudioWorkspaceService.Instance.RepositoryName;
+            Changes = changeRepository.GetAll(queryParameters, optionalParameters).Where(changeInfo => changeInfo.Project == projectName).ToList();
 
             ChangeSelectedCommand = new DelegateCommand(changeInfo => HandleChangeSelectedCommand((ChangeInfo)changeInfo));
         }
