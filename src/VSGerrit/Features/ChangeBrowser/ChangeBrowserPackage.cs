@@ -64,7 +64,7 @@ namespace VSGerrit.Features.ChangeBrowser
         protected override void Initialize()
         {
             ChangeBrowserCommand.Initialize(this);
-            ConfigurationProvider.Instance.Initialize(new GerritConfiguration("czaharia", "e0QPJ3wSivllpa4MtJD/0nfGkrwqGI/4pgic3+/B+g", "http://gerrit.ullink.lan:8080/a/"));
+            ConfigurationProvider.Instance.Initialize(new GerritConfiguration("twagner", "GZvbLV5KwP6LgUVYFjyKDlIXp6ey98P3Jv2bSkXvDQ", "http://gerrit.ullink.lan:8080/a/"));
 
             var componentModel = (IComponentModel) GetService(typeof (SComponentModel));
 
