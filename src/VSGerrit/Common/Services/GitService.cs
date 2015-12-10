@@ -6,7 +6,7 @@ namespace VSGerrit.Common.Services
     {
         public void Checkout(string rootDirectory, string repositoryName, string reference)
         {
-            RunGitCommand(rootDirectory, $"fetch ssh://czaharia@gerrit.ullink.lan:29418/{repositoryName} {reference}");
+            RunGitCommand(rootDirectory, $"fetch ssh://twagner@gerrit.ullink.lan:29418/{repositoryName} {reference}");
             RunGitCommand(rootDirectory, "checkout FETCH_HEAD");
         }
 
