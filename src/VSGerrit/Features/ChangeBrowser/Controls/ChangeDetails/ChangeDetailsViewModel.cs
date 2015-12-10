@@ -51,7 +51,7 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
 
         private void HandleStartReviewCommand()
         {
-            _gitService.Checkout(_workspaceService.Rootdirectory, _workspaceService.RepositoryName, _changeInfo.Revisions.Last().Value.Ref);
+            _gitService.Checkout(_workspaceService.Rootdirectory, _workspaceService.RepositoryName, _changeInfo.Revisions[_changeInfo.CurrentRevision].Ref);
 
             OpenModifiedFiles();
 
@@ -76,7 +76,7 @@ namespace VSGerrit.Features.ChangeBrowser.Controls.ChangeDetails
         private void OpenModifiedFiles()
         {
             var rootDirectory = _workspaceService.Rootdirectory;
-            var changedFiles = _changeInfo.Revisions.Last().Value.Files.Keys.Select(filename => Path.Combine(rootDirectory, filename).NormalizePath());
+            var changedFiles = _changeInfo.Revisions[_changeInfo.CurrentRevision].Files.Keys.Select(filename => Path.Combine(rootDirectory, filename).NormalizePath());
 
             var documentIds = changedFiles.SelectMany(changedFile => _workspaceService.Workspace.CurrentSolution.GetDocumentIdsWithFilePath(changedFile)).ToList();
 
